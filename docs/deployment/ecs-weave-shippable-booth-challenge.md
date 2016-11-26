@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Amazon ECS-Weave-Shippable Booth Challenge
+## Amazon ECS-Weave-Shippable Booth Challenge
 
 Welcome to the Amazon ECS - Weave - Shippable Booth Challenge!
 
