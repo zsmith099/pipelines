@@ -1,9 +1,9 @@
 # Production settings
 
-baseurl: "/microservices-demo"
-url: "https://microservices-demo.github.io"
-deploy_doc_url_prefix: https://microservices-demo.github.io/microservices-demo
-main_url_prefix: https://microservices-demo.github.io
+baseurl: "/pipelines"
+url: "https://aws-weave-ship-challenge.github.io"
+deploy_doc_url_prefix: https://aws-weave-ship-challenge/microservices-demo
+main_url_prefix: https://aws-weave-ship-challenge.github.io
 
 # Build settings
 markdown: kramdown
