@@ -2,8 +2,8 @@
 
 baseurl: "/pipelines"
 url: "https://aws-weave-ship-challenge.github.io"
-#deploy_doc_url_prefix: https://aws-weave-ship-challenge.github.io/microservices-demo
-deploy_doc_url_prefix: /aws-weave-ship-challenge
+#deploy_doc_url_prefix: https://aws-weave-ship-challenge.github.io/pipelines
+deploy_doc_url_prefix: /pipelines
 main_url_prefix: https://aws-weave-ship-challenge.github.io
 
 # Build settings
