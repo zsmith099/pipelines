@@ -137,8 +137,8 @@ the service you'll deploy:
               - 40000:40000
       </pre>
       * Replace the portMappings with a port number between 40001-49999,  e.g. `40833:40833`
-      * When accessing your Test instance of your front-end service, you'll do so
-      at SockShopALB-351062557.us-east-1.elb.amazonaws.com:`{your test port number}`, e.g. SockShopALB-351062557.us-east-1.elb.amazonaws.com:40833
+      <p></p>
+
     * Resource `params-front-end-test`
 
       <pre>
@@ -164,8 +164,8 @@ the service you'll deploy:
               - 50000:50000
       </pre>
       * Replace the portMappings with a port number between 50000-59999,  e.g. `50833:50833`
-      * When accessing your Test instance of your front-end service, you'll do so
-      at SockShopALB-351062557.us-east-1.elb.amazonaws.com:`{your prod port number}`, e.g. SockShopALB-351062557.us-east-1.elb.amazonaws.com:50833      
+      <p></p>
+
     * Resource `params-front-end-prod`
 
       <pre>
@@ -324,7 +324,7 @@ auto-deploy to the Test environment</span></p>
 
 {:start="10"}
 10. <p>Explore!</p>
-  * Navigate to `http://54.166.157.73:4040` to view the Weave visualization of
+  * Navigate to <a href="http://54.166.157.73:4040" style="color: orange">http://54.166.157.73:4040</a> to view the Weave visualization of
   your containerized application. Click around to see various info on your services.
   ![weavescope](../assets/img/weavescope-10-1.png){:width="600px"}  
   * Login with username `booth` and password `Challenge2016` <a href="https://betaship.signin.aws.amazon.com/console"
