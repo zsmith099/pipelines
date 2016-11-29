@@ -18,7 +18,7 @@ resources:
   - name: alb-front-end-test     #required
     type: loadBalancer      #required
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/frontendTESTTG/815ea30a8dcbaabc"
+      sourceName: "arn:aws:elasticloadbalancing:us-east-1:291318889788:targetgroup/frontendTESTTG/d64c2cec4735e31b"
       method: application
 
 # AWS ALB target group for PROD environment
@@ -65,7 +65,7 @@ resources:
   - name: img-front-end
     type: image
     pointer:
-      sourceName: 288971733297.dkr.ecr.us-east-1.amazonaws.com/front-end
+      sourceName: 291318889788.dkr.ecr.us-east-1.amazonaws.com/front-end
       isPull: false
     seed:
       versionName: master.1
@@ -75,7 +75,7 @@ resources:
     type: dockerOptions
     version:
       portMappings:
-        - 0:8080
+        - 40000:40000
 
 # Environment variables for TEST environment
   - name: params-front-end-test
@@ -84,14 +84,14 @@ resources:
       params:
         ENVIRONMENT: "development"
         NODE_ENV: "development"
-        PORT: 8080
+        PORT: 40000
 
 # Docker image options for PROD environment
   - name: img-opts-front-end-prod
     type: dockerOptions
     version:
       portMappings:
-        - 0:8080
+        - 50000:50000
 
 # Environment variables for PROD environment
   - name: params-front-end-prod
@@ -100,12 +100,12 @@ resources:
       params:
         ENVIRONMENT: "production"
         NODE_ENV: "production"
-        PORT: 8080
+        PORT: 50000
 
 # PROD replica controller
   - name: replicas-front-end-prod
     type: replicas
     version:
-      count: 2
+      count: 1
 
 #--------------------

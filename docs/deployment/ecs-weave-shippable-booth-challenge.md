@@ -2,9 +2,7 @@
 layout: default
 ---
 
-## Amazon ECS-Weave-Shippable Booth Challenge
-
-Welcome to the Amazon ECS - Weave - Shippable Booth Challenge!
+## Welcome to the Amazon ECS-Weave-Shippable Booth Challenge!
 
 In this challenge, you'll set up fully automated deployments of the front-end
 component for the containerized [Socks Shop eCommerce](https://microservices-demo.github.io/) application, in 30 minutes or less.
@@ -23,7 +21,7 @@ To complete the challenge, you will:
   * Explore the Amazon ECS, Weave Scope, and Shippable services
   * Register for the prize drawing
 
-Stop by the Shippable booth (#1243) or the Weave booth (#1140) at any time during
+Stop by the `Shippable booth (#1243)` or the `Weave booth (#1140)` at any time during
 expo hours for assistance.
 
 ---
@@ -31,7 +29,7 @@ expo hours for assistance.
 ### Fork and clone the repos
 To get started, you'll need to fork and clone two GitHub repos.
 
-1. Fork the [microservices-demo](https://github.com/ship-aws-challenge/pipelines){: style="color: orange"}
+1. Fork the [pipelines](https://github.com/aws-weave-ship-challenge/pipelines){: style="color: orange"}
 GitHub repo to your personal [GitHub account](https://github.com/join?source=header-home){: style="color: orange"}
 
 2. <p>Clone your fork locally on your machine</p>  
@@ -41,7 +39,7 @@ GitHub repo to your personal [GitHub account](https://github.com/join?source=hea
       <pre>$ git clone <i>your_forked_url</i></pre>
 
 {:start="3"}
-3. <p>Repeat steps 1-3 for the <a href="https://github.com/ship-aws-challenge/front-end"
+3. <p>Repeat steps 1 and 2 for the <a href="https://github.com/aws-weave-ship-challenge/front-end"
 style="color: orange">
 front-end</a> repo
 
@@ -49,43 +47,27 @@ front-end</a> repo
 
 ### Configure an automated CI/CD pipeline
 
-Your Weave-enabled Amazon ECS cluster should now be running 15 out of the 16 services
-of the Socks Shop application (verify this by navigating to [EC2 Container Service](https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services)).
-We'll use Shippable to set up an automated CI/CD pipeline to deploy the
-<a href="https://github.com/microservices-demo/front-end" style="color: orange">
+A Weave-enabled Amazon ECS cluster is already running all of the services
+of the Socks Shop application, except one. You'll use Shippable to set up an automated CI/CD pipeline to deploy the <a href="https://github.com/microservices-demo/front-end" style="color: orange">
 front-end</a> service.
 
-1. Create a <a href="https://www.shippable.com" style="color: orange">Shippable</a>
-account (if you don't already have one) by logging in with your
-GitHub credentials
+1. Create a <a href="https://app.shippable.com/login.html" style="color: orange">Shippable</a> account using your GitHub credentials
 
 2. <p>Enable the <span style="color: orange">front-end</span> repo for <span style="color: orange">
 CI</span> in Shippable</p>
-    * In your local copy of the `front-end` repo, you’ll need to update the `GROUP`
-    environment variable in the shippable.yml configuration file with your values
-    from your AWS environment (i.e. your Account ID and Region):
-    * Replace the Amazon ECR registry URL with the URL for your Container registry,
-    e.g. `288971733297.dkr.ecr.us-east-1.amazonaws.com/front-end` (you can copy/paste
-      this URL by selecting `View Push Commands` on <a href="https://console.aws.amazon.com/ecs/home#/repositories/front-end#images;tagStatus=ALL" style="color: orange">this page</a>)
+    * In your local copy of the `front-end` repo, make the image tag you'll push
+    unique by updating the `IMAGE_TAG` environment variable in the shippable.yml
+    file with your last name:
+    * Replace `yourName` with your last name:
       <pre>
       env:
         global:
-          - GROUP=288971733297.dkr.ecr.us-east-1.amazonaws.com
-      </pre>
-
-    * If you deployed your cluster to another region besides `us-east-1`, also
-    update the `region` value accordingly:
-      <pre>
-      integrations:
-        hub:
-          - integrationName: shippable-ecr  # must match Subscription Integration in Shippable
-            type: ecr
-            region: us-east-1
+          - IMAGE_TAG=yourName.$BRANCH.$BUILD_NUMBER
       </pre>
 
     * Commit and push your changes to Github
       <pre>
-      $ git commit -am 'update shippable.yml with my AWS details'
+      $ git commit -am 'update shippable.yml with my last name'
       $ git push origin master
       </pre>
     * Select your Subscription from the drop-down menu (three horizontal lines)
@@ -97,72 +79,62 @@ CI</span> in Shippable</p>
 
 {:start="3"}
 3. <p>Create the <span style="color: orange">front-end CD pipeline</span></p>
-In your local copy of the microservices-demo repo, you'll need to update
-the `shippable.resource.yml` configuration file with values from your AWS
-environment:
-    * Resource `img-front-end`
+In your local copy of the `pipelines` repo, you'll need to update
+the `shippable.resource.yml` configuration file with a unique port mapping for
+the service you'll deploy:
+    * Resource `img-opts-front-end-test`
 
       <pre>
-      # Docker image information
-        - name: img-front-end
-          type: image
-          pointer:
-            sourceName: 288971733297.dkr.ecr.us-east-1.amazonaws.com/front-end
-            isPull: false
-          seed:
-            versionName: master.1
+      # Docker image options for TEST environment
+        - name: img-opts-front-end-test
+          type: dockerOptions
+          version:
+            portMappings:
+              - 40000:40000
       </pre>
-      * Replace the Amazon ECR registry URL with the URL for your Container
-      registry,  e.g. `288971733297.dkr.ecr.us-east-1.amazonaws.com/front-end`
-      * You can copy/paste this URL by selecting `View Push Commands` on
-      <a href="https://console.aws.amazon.com/ecs/home#/repositories/front-end#images;tagStatus=ALL" style="color: orange">
-      this page</a> or finding the value for `EcrRepo` in your CloudFormation Outputs
+      * Replace the portMappings with a port number between 40001-49999,  e.g. `40833:40833`
+      * When accessing your Test instance of your front-end service, you'll do so
+      at SockShopALB-351062557.us-east-1.elb.amazonaws.com:`{your test port number}`, e.g. SockShopALB-351062557.us-east-1.elb.amazonaws.com:40833
+    * Resource `params-front-end-test`
+
+      <pre>
+      # Environment variables for TEST environment
+        - name: params-front-end-test
+          type: params
+          version:
+            params:
+              ENVIRONMENT: "development"
+              NODE_ENV: "development"
+              PORT: 40000
+      </pre>
+      * Replace the value for `PORT` to match the value you supplied in `portMappings` above, e.g. `40833`
       <p></p>
-    * Resource `alb-front-end-test`
+    * Resource `img-opts-front-end-prod`
 
       <pre>
-      # AWS ALB target group for TEST environment
-        - name: alb-front-end-test     #required
-          type: loadBalancer      #required
-          pointer:
-            sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/frontendTESTTG/102776f0c4a71605"
-            method: application
+      # Docker image options for PROD environment
+        - name: img-opts-front-end-prod
+          type: dockerOptions
+          version:
+            portMappings:
+              - 50000:50000
       </pre>
-      * Replace the value for `sourceName` to be the ARN for your Target Group
-      named `frontendTESTTG`
-      * You can find this in <a href="https://console.aws.amazon.com/ec2/v2/home#TargetGroups:" style="color: orange">EC2-Target Groups</a>
-      or in the value for `TargetGroupARNTest` in your CloudFormation Outputs
-      <p></p>
-    * Resource `alb-front-end-prod`
+      * Replace the portMappings with a port number between 50000-59999,  e.g. `50833:50833`
+      * When accessing your Test instance of your front-end service, you'll do so
+      at SockShopALB-351062557.us-east-1.elb.amazonaws.com:`{your prod port number}`, e.g. SockShopALB-351062557.us-east-1.elb.amazonaws.com:50833      
+    * Resource `params-front-end-prod`
 
       <pre>
-      # AWS ALB target group for PROD environment
-        - name: alb-front-end-prod     #required
-          type: loadBalancer      #required
-          pointer:
-            sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/frontendPRODTG/1a91e8d308e7f76e"
-            method: application
+      # Environment variables for PROD environment
+        - name: params-front-end-prod
+          type: params
+          version:
+            params:
+              ENVIRONMENT: "production"
+              NODE_ENV: "production"
+              PORT: 50000
       </pre>
-      * Replace the value for `sourceName` to be the ARN for your Target Group
-      named `frontendPRODTG`
-      * You can find this in <a href="https://console.aws.amazon.com/ec2/v2/home#TargetGroups:" style="color: orange">EC2-Target Groups</a>
-      or in the value for `TargetGroupARNProd` in your CloudFormation Outputs
-      <p></p>
-
-    If you're running your cluster in a region other than `us-east-1`:
-    * Resource `cluster-demo-ecs`
-
-      <pre>
-      # AWS cluster information
-        - name: cluster-demo-ecs
-          type: cluster
-          integration: shippable-aws
-          pointer:
-            sourceName : "ecs-weave-shippable-demo"
-            region: "us-east-1"
-      </pre>
-      * Replace the value for `region` to be the AWS region where you're running
-      your cluster
+      * Replace the value for `PORT` to match the value you supplied in `portMappings` above, e.g. `50833`
       <p></p>
 
     Now, load your Pipeline configuration files into Shippable:
@@ -175,7 +147,7 @@ environment:
       * Account Integrations: select `github` from the list
       * Projects Permissions: leave as `All projects`
       * Select `Save`
-    * Select Project dropdown: choose `microservices-demo` project
+    * Select Project dropdown: choose `pipelines` project
     * Select Branch dropdown: choose `master`
     * Select `Save`
     * Select `SPOG` view and verify that your pipeline has been loaded
@@ -189,9 +161,9 @@ environment:
   * Select `Add Integration`
     * Select `Amazon ECR` from the list and complete the fields, as follows:
       * Integration Name: name your integration `shippable-ecr`
-      * Login to your AWS Management Console and navigate to the <a href="https://console.aws.amazon.com/iam/home#users" style="color: orange">shippableDemoUser</a> IAM user, select `Security credentials`, and then select `Create Access Key`
+      * For this challenge, you'll use a pre-configured user with keys AKIAJN2MBNFZ5QO5K6BQ and TtS/ic0hQYQubWasp3Qht0xbiIoLvjqYH/9YZo0J
       * Copy/paste the Aws_access_key_id and Aws_secret_access_key into the
-      Shippable fields (also, keep these values for use in step 5)
+      Shippable fields
       * Select `Save`
   * Now, assign your Account Integration for use by your Subscription
     * Select your Subscription from the dropdown menu in upper left (three
@@ -292,8 +264,7 @@ auto-deploy to the Test environment</span></p>
 
 {:start="10"}
 10. <p>Explore!</p>
-  * Retrieve the IP address of any of your <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/containerInstances" style="color: orange">cluster instances</a>
-  * Navigate to `http://{your IP address}:4040` to view the Weave visualization of
+  * Navigate to `http://54.166.157.73:4040` to view the Weave visualization of
   your containerized application. Click around to see various info on your services.
   ![weavescope](../assets/img/weavescope-10-1.png){:width="600px"}  
   * Navigate to <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">the
