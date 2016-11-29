@@ -25,7 +25,7 @@ resources:
   - name: alb-front-end-prod     #required
     type: loadBalancer      #required
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/frontendPRODTG/dea24e9a89ef88f4"
+      sourceName: "arn:aws:elasticloadbalancing:us-east-1:291318889788:loadbalancer/app/SockShopALB/cdb9f64fa08f0bf3"
       method: application
 
 ################################
