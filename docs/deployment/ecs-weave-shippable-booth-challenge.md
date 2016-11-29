@@ -78,7 +78,51 @@ CI</span> in Shippable</p>
     ![front-end-enable](../assets/img/shippable-pipeline-2.png){:width="600px"}
 
 {:start="3"}
-3. <p>Create the <span style="color: orange">front-end CD pipeline</span></p>
+3. <p>Configure an integration between <span style="color: orange">Shippable</span>
+ and <span style="color: orange">Amazon ECR</span></p>
+  * Navigate to `Account Settings` via the gear icon in the upper right
+  * Select `Integrations` tab
+  * Select `Add Integration`
+    * Select `Amazon ECR` from the list and complete the fields, as follows:
+      * Integration Name: name your integration `shippable-ecr`
+      * For this challenge, you'll use a pre-configured user with keys AKIAJN2MBNFZ5QO5K6BQ and TtS/ic0hQYQubWasp3Qht0xbiIoLvjqYH/9YZo0J
+      * Copy/paste the Aws_access_key_id and Aws_secret_access_key into the
+      Shippable fields
+      * Select `Save`
+  * Now, assign your Account Integration for use by your Subscription
+    * Select your Subscription from the dropdown menu in upper left (three
+      horizontal lines)
+    * Select `Settings` tab, `Integrations` tab, and `Add Integration`
+    * Complete the fields with the following values:
+      * Name: shippable-ecr
+      * Account Integrations: select `shippable-ecr` from the list
+      * Project Permissions: leave `All projects` selected
+      * Select `Save`
+      <p></p>  
+  ![sub-integration-ecr](../assets/img/shippable-pipeline-4.png){:width="600px"}
+
+{:start="4"}
+4. <p>Configure an integration between <span style="color: orange">Shippable</span>
+and <span style="color: orange">Amazon ECS</span></p>
+  * Navigate to `Account Settings` via the gear icon in upper right
+  * Select `Integrations` tab
+  * Select `Add Integration`
+    * Select `AWS` from the list
+    * Name your integration `shippable-aws`
+    * Copy/paste the `Aws_access_key_id` and `Aws_secret_access_key` into the
+    Shippable fields (use the same values from step 4 above)
+    * Select `Save`
+  * Now, assign your Account Integration for use by your Subscription
+    * Select your Subscription from the dropdown menu in upper left (three lines)
+    * Select `Settings` tab, `Integrations` tab, and `Add Integration`
+    * Complete the fields with the following values:
+      * Name: shippable-aws
+      * Account Integrations: select `shippable-aws` from the list
+      * Project Permissions: leave `All projects` selected
+      * Select `Save`
+
+{:start="5"}
+5. <p>Create the <span style="color: orange">front-end CD pipeline</span></p>
 In your local copy of the `pipelines` repo, you'll need to update
 the `shippable.resource.yml` configuration file with a unique port mapping for
 the service you'll deploy:
@@ -152,50 +196,6 @@ the service you'll deploy:
     * Select `Save`
     * Select `SPOG` view and verify that your pipeline has been loaded
     ![pipeline-load](../assets/img/shippable-pipeline-3.png){:width="600px"}
-
-{:start="4"}
-4. <p>Configure an integration between <span style="color: orange">Shippable</span>
- and <span style="color: orange">Amazon ECR</span></p>
-  * Navigate to `Account Settings` via the gear icon in the upper right
-  * Select `Integrations` tab
-  * Select `Add Integration`
-    * Select `Amazon ECR` from the list and complete the fields, as follows:
-      * Integration Name: name your integration `shippable-ecr`
-      * For this challenge, you'll use a pre-configured user with keys AKIAJN2MBNFZ5QO5K6BQ and TtS/ic0hQYQubWasp3Qht0xbiIoLvjqYH/9YZo0J
-      * Copy/paste the Aws_access_key_id and Aws_secret_access_key into the
-      Shippable fields
-      * Select `Save`
-  * Now, assign your Account Integration for use by your Subscription
-    * Select your Subscription from the dropdown menu in upper left (three
-      horizontal lines)
-    * Select `Settings` tab, `Integrations` tab, and `Add Integration`
-    * Complete the fields with the following values:
-      * Name: shippable-ecr
-      * Account Integrations: select `shippable-ecr` from the list
-      * Project Permissions: leave `All projects` selected
-      * Select `Save`
-      <p></p>  
-  ![sub-integration-ecr](../assets/img/shippable-pipeline-4.png){:width="600px"}
-
-{:start="5"}
-5. <p>Configure an integration between <span style="color: orange">Shippable</span>
-and <span style="color: orange">Amazon ECS</span></p>
-  * Navigate to `Account Settings` via the gear icon in upper right
-  * Select `Integrations` tab
-  * Select `Add Integration`
-    * Select `AWS` from the list
-    * Name your integration `shippable-aws`
-    * Copy/paste the `Aws_access_key_id` and `Aws_secret_access_key` into the
-    Shippable fields (use the same values from step 4 above)
-    * Select `Save`
-  * Now, assign your Account Integration for use by your Subscription
-    * Select your Subscription from the dropdown menu in upper left (three lines)
-    * Select `Settings` tab, `Integrations` tab, and `Add Integration`
-    * Complete the fields with the following values:
-      * Name: shippable-aws
-      * Account Integrations: select `shippable-aws` from the list
-      * Project Permissions: leave `All projects` selected
-      * Select `Save`
 
 {:start="6"}
 6. <p>Link <span style="color: orange">CI</span> to your <span style="color: orange">
