@@ -181,6 +181,57 @@ the service you'll deploy:
       * Replace the value for `PORT` to match the value you supplied in `portMappings` above, e.g. `50833`
       <p></p>
 
+      Now, update the `shippable.resource.yml` configuration file with your
+      unique port mapping for the service you'll deploy:
+
+      * Resource `ecs-deploy-test-front-end`
+
+        <pre>
+        # TEST deployment to Amazon ECS
+          - name: ecs-deploy-test-front-end
+            type: deploy
+            steps:
+              - IN: man-front-end
+              - IN: params-front-end-test
+              - IN: trigger-front-end-test
+              - IN: cluster-demo-ecs
+              - IN: alb-front-end-test
+                applyTo:
+                  - manifest: man-front-end
+                    image: img-front-end
+                    port: 40000
+              - TASK: managed
+        </pre>
+        * Replace the `port` value with your Test port number from above, e.g.
+        `40833`
+      * Resource `ecs-deploy-prod-front-end`
+
+        <pre>
+        # PROD deployment to Amazon ECS
+          - name: ecs-deploy-prod-front-end
+            type: deploy
+            steps:
+              - IN: ecs-deploy-test-front-end
+                switch: off
+              # - IN: release-front-end
+              #   switch: off
+              - IN: img-opts-front-end-prod
+              - IN: params-front-end-prod
+              - IN: replicas-front-end-prod
+              - IN: trigger-front-end-prod
+              - IN: alb-front-end-prod
+                applyTo:
+                  - manifest: man-front-end
+                    image: img-front-end
+                    port: 50000
+              - IN: cluster-demo-ecs
+              - TASK: managed        </pre>
+        * Replace the `port` value with your Prod port number from above, e.g.
+        `50833`
+
+      <p></p>
+
+
     Now, load your Pipeline configuration files into Shippable:
 
     * Select the `Pipelines` tab, `Resources` view, and then `Add Resource`
