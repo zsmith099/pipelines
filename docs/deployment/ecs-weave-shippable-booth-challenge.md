@@ -178,17 +178,18 @@ the service you'll deploy:
               NODE_ENV: "production"
               PORT: 50000
       </pre>
-      * Replace the value for `PORT` to match the value you supplied in `portMappings` above, e.g. `50833`
+      * Replace the value for `PORT` to match the value you supplied in
+      `portMappings` above, e.g. `50833`
       <p></p>
 
       Now, update the `shippable.resource.yml` configuration file with your
       unique port mapping for the service you'll deploy:
 
-      * Resource `ecs-deploy-test-front-end`
+      * Resource `yourName-ecs-deploy-test-front-end`
 
         <pre>
         # TEST deployment to Amazon ECS
-          - name: ecs-deploy-test-front-end
+          - name: yourName-ecs-deploy-test-front-end
             type: deploy
             steps:
               - IN: man-front-end
@@ -202,13 +203,16 @@ the service you'll deploy:
                     port: 40000
               - TASK: managed
         </pre>
+        * Replace `yourName` in the `name` value with your last name, e.g.
+        `name: smith-ecs-deploy-test-front-end`
         * Replace the `port` value with your Test port number from above, e.g.
         `40833`
-      * Resource `ecs-deploy-prod-front-end`
+        <p></p>
+      * Resource `yourName-ecs-deploy-prod-front-end`
 
         <pre>
         # PROD deployment to Amazon ECS
-          - name: ecs-deploy-prod-front-end
+          - name: yourName-ecs-deploy-prod-front-end
             type: deploy
             steps:
               - IN: ecs-deploy-test-front-end
@@ -226,11 +230,11 @@ the service you'll deploy:
                     port: 50000
               - IN: cluster-demo-ecs
               - TASK: managed        </pre>
+        * Replace `yourName` in the `name` value with your last name, e.g.
+        `name: smith-ecs-deploy-test-front-end`
         * Replace the `port` value with your Prod port number from above, e.g.
         `50833`
-
-      <p></p>
-
+        <p></p>
 
     Now, load your Pipeline configuration files into Shippable:
 
