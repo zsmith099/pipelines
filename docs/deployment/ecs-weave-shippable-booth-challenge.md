@@ -267,10 +267,10 @@ auto-deploy to the Test environment</span></p>
   * Navigate to `http://54.166.157.73:4040` to view the Weave visualization of
   your containerized application. Click around to see various info on your services.
   ![weavescope](../assets/img/weavescope-10-1.png){:width="600px"}  
-  * Navigate to <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">the
-  AWS Management Console</a> and explore the different elements of your cluster in Amazon ECS
+  * Login with username `booth` and password `Challenge2016` <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">the
+  AWS Management Console</a> and explore the different elements of the cluster in Amazon ECS
   ![amazon-ecs](../assets/img/amazon-ecs-10-2.png){:width="600px"}
-  * Navigate to your Amazon ECR repository to view your newly created Docker images
+  * Navigate to Amazon ECR repository to view your newly created Docker images
   * Select `Repositories` in the left-hand nav from your cluster page
   ![amazon-ecr](../assets/img/amazon-ecr-10-3.png){:width="600px"}
 
