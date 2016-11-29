@@ -286,7 +286,8 @@ auto-deploy to the Test environment</span></p>
 
 ### Register for the prize drawing!
 When finished exploring, return to the Shippable booth (#1243) to register for the
-prize drawing. You'll be eligible to win one of these great prizes:
+prize drawing and be eligible to win one of these great prizes:
+
   * MacBook Air
   * Vive VR Headset
   * Bose SoundLink
