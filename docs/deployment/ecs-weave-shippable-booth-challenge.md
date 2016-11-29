@@ -293,15 +293,15 @@ Pipeline</span> via an <span style="color: orange">Event Trigger</span></p>
     * Then a Deploy job will run to deploy to Amazon ECS
   ![pipeline-test](../assets/img/shippable-pipeline-7-2.png){:width="600px"}
   * View your application running your `Test` front-end in your browser at
-  `SockShopALB-351062557.us-east-1.elb.amazonaws.com:{your prod port number}`
-  (See CloudFormation-Outputs for address)
+  `SockShopALB-351062557.us-east-1.elb.amazonaws.com:8080`
   ![front-end-test](../assets/img/shippable-pipeline-7-3.png){:width="600px"}
 
 {:start="8"}
 8. <p>Deploy to the <span style="color: orange">Prod environment</span></p>
   * Right-click the `ecs-deploy-prod` job and select `Run`
   * A Deploy job will run and deploy a Prod instance of `front-end` to Amazon ECS
-  * View your application running your `Prod` front-end in your browser at `{your ALB address}` (it should look identical to your `Test` front-end)
+  * View your application running your `Prod` front-end in your browser at
+  `SockShopALB-351062557.us-east-1.elb.amazonaws.com` (it should look identical to your `Test` front-end)
 
 {:start="9"}
 9. <p>Make a change to your front-end service and <span style="color: orange">
@@ -318,7 +318,7 @@ auto-deploy to the Test environment</span></p>
   * View the automated CI/CD flow in Pipeline view in Shippable, which will result
   in the code change being deployed to your Test environment
   * In your browser, navigate again to your Test environment (
-    `SockShopALB-351062557.us-east-1.elb.amazonaws.com:{your prod port number}`)
+    `SockShopALB-351062557.us-east-1.elb.amazonaws.com:8080`)
     and confirm that the change was deployed successfully
   ![front-end-test-2](../assets/img/shippable-pipeline-9.png){:width="600px"}
 
@@ -347,8 +347,9 @@ auto-deploy to the Test environment</span></p>
 ---
 
 ### Register for the prize drawing!
-When finished exploring, return to the `Shippable booth (#1243)` to register for the
-prize drawing and be eligible to win one of these great prizes:
+When finished exploring, return to the `Shippable booth (#1243)` and show your
+pipeline to register for the prize drawing and be eligible to win one of these
+great prizes:
 
   * MacBook Air
   * Vive VR Headset
