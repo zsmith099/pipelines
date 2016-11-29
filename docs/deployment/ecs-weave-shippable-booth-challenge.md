@@ -215,7 +215,7 @@ the service you'll deploy:
           - name: yourName-ecs-deploy-prod-front-end
             type: deploy
             steps:
-              - IN: ecs-deploy-test-front-end
+              - IN: yourName-ecs-deploy-test-front-end
                 switch: off
               # - IN: release-front-end
               #   switch: off
@@ -232,6 +232,8 @@ the service you'll deploy:
               - TASK: managed        </pre>
         * Replace `yourName` in the `name` value with your last name, e.g.
         `name: smith-ecs-deploy-test-front-end`
+        * Replace `yourName` in the first `IN` value with your last name, e.g.
+        `IN: smith-ecs-deploy-test-front-end`
         * Replace the `port` value with your Prod port number from above, e.g.
         `50833`
         <p></p>
