@@ -235,7 +235,9 @@ Pipeline</span> via an <span style="color: orange">Event Trigger</span></p>
     * Then a new Manifest job will run to update with the newest image tag
     * Then a Deploy job will run to deploy to Amazon ECS
   ![pipeline-test](../assets/img/shippable-pipeline-7-2.png){:width="600px"}
-  * View your application running your `Test` front-end in your browser at `{your ALB address}:8080` (See CloudFormation-Outputs for address)
+  * View your application running your `Test` front-end in your browser at
+  `SockShopALB-351062557.us-east-1.elb.amazonaws.com:{your prod port number}`
+  (See CloudFormation-Outputs for address)
   ![front-end-test](../assets/img/shippable-pipeline-7-3.png){:width="600px"}
 
 {:start="8"}
@@ -258,8 +260,9 @@ auto-deploy to the Test environment</span></p>
       </pre>
   * View the automated CI/CD flow in Pipeline view in Shippable, which will result
   in the code change being deployed to your Test environment
-  * In your browser, navigate again to your Test environment (on port 8080) and
-  confirm that the change was deployed successfully
+  * In your browser, navigate again to your Test environment (
+    `SockShopALB-351062557.us-east-1.elb.amazonaws.com:{your prod port number}`)
+    and confirm that the change was deployed successfully
   ![front-end-test-2](../assets/img/shippable-pipeline-9.png){:width="600px"}
 
 {:start="10"}
@@ -267,8 +270,10 @@ auto-deploy to the Test environment</span></p>
   * Navigate to `http://54.166.157.73:4040` to view the Weave visualization of
   your containerized application. Click around to see various info on your services.
   ![weavescope](../assets/img/weavescope-10-1.png){:width="600px"}  
-  * Login with username `booth` and password `Challenge2016` <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">the
-  AWS Management Console</a> and explore the different elements of the cluster in Amazon ECS
+  * Login with username `booth` and password `Challenge2016` <a href="https://betaship.signin.aws.amazon.com/console"
+  style="color: orange">to the AWS Management Console</a>
+  * Explore <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">
+  the different elements of the cluster in Amazon ECS</a>
   ![amazon-ecs](../assets/img/amazon-ecs-10-2.png){:width="600px"}
   * Navigate to Amazon ECR repository to view your newly created Docker images
   * Select `Repositories` in the left-hand nav from your cluster page
