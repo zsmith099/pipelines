@@ -51,7 +51,11 @@ A Weave-enabled Amazon ECS cluster is already running all of the services
 of the Socks Shop application, except one. You'll use Shippable to set up an automated CI/CD pipeline to deploy the <a href="https://github.com/microservices-demo/front-end" style="color: orange">
 front-end</a> service.
 
-1. Create a <a href="https://app.shippable.com/login.html" style="color: orange">Shippable</a> account using your GitHub credentials
+1. Create a <a href="https://app.shippable.com/login.html" style="color: orange">Shippable</a>
+account using your GitHub credentials. After logging in with GitHub the first time, perform one of the following:
+    * Click the gear icon in upper right and select 'Enable' private projects in the Git Identities section
+    * OR navigate to <a href="https://app.shippable.com/auth/github/581532953d9ed90f00b6c0e7/public" style="color: orange">
+    this page</a> and follow the prompts to authorize public project access
 
 2. <p>Enable the <span style="color: orange">front-end</span> repo for <span style="color: orange">
 CI</span> in Shippable</p>
