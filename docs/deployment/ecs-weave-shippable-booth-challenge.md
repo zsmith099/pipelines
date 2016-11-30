@@ -29,7 +29,7 @@ expo hours for assistance.
 ### Fork and clone the repos
 To get started, you'll need to fork and clone two GitHub repos.
 
-1. Fork the [pipelines](https://github.com/aws-weave-ship-challenge/pipelines){: style="color: orange"}
+1. Fork the [pipelines](https://github.com/aws-weave-shippable-challenge/pipelines){: style="color: orange"}
 GitHub repo to your personal [GitHub account](https://github.com/join?source=header-home){: style="color: orange"}
 
 2. <p>Clone your fork locally on your machine</p>  
@@ -39,7 +39,7 @@ GitHub repo to your personal [GitHub account](https://github.com/join?source=hea
       <pre>$ git clone <i>your_forked_url</i></pre>
 
 {:start="3"}
-3. <p>Repeat steps 1 and 2 for the <a href="https://github.com/aws-weave-ship-challenge/front-end"
+3. <p>Repeat steps 1 and 2 for the <a href="https://github.com/aws-weave-shippable-challenge/front-end"
 style="color: orange">
 front-end</a> repo
 
