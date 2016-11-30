@@ -124,7 +124,7 @@ and <span style="color: orange">Amazon ECS</span></p>
 {:start="5"}
 5. <p>Create the <span style="color: orange">front-end CD pipeline</span></p>
 In your local copy of the `pipelines` repo, you'll need to update
-the `shippable.resource.yml` configuration file with a unique port mapping for
+the `shippable.resources.yml` configuration file with a unique port mapping for
 the service you'll deploy:
     * Resource `img-opts-front-end-test`
 
@@ -182,7 +182,7 @@ the service you'll deploy:
       `portMappings` above, e.g. `50833`
       <p></p>
 
-      Now, update the `shippable.resource.yml` configuration file with your
+      Now, update the `shippable.jobs.yml` configuration file with your
       unique port mapping for the service you'll deploy:
 
       * Resource `yourName-ecs-deploy-test-front-end`
