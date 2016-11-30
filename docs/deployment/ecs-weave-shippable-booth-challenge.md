@@ -238,6 +238,13 @@ the service you'll deploy:
         `50833`
         <p></p>
 
+      Commit and push your changes to `shippable.jobs.yml` and `shippable.resources.yml`
+      to your fork of the `pipelines` repo on Github
+      <pre>
+      $ git commit -am 'update shippable pipeline ymls'
+      $ git push origin master
+      </pre>
+
     Now, load your Pipeline configuration files into Shippable:
 
     * Select the `Pipelines` tab, `Resources` view, and then `Add Resource`
