@@ -339,7 +339,8 @@ auto-deploy to the Test environment</span></p>
   * Login with username `booth` and password `Challenge2016` <a href="https://betaship.signin.aws.amazon.com/console"
   style="color: orange">to the AWS Management Console</a>
   * Explore <a href="https://console.aws.amazon.com/ecs/home#/clusters/ecs-weave-shippable-demo/services" style="color: orange">
-  the different elements of the cluster in Amazon ECS</a>. Find your deployed services
+  the different elements of the cluster in Amazon ECS</a> (make sure
+  you're in the Virginia region!). Find your deployed services
   (they start with your last name) and drill in.
   ![amazon-ecs](../assets/img/amazon-ecs-10-2.png){:width="600px"}
   * Navigate to Amazon ECR repository to view your newly created Docker images
