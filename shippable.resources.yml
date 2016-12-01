@@ -75,7 +75,7 @@ resources:
     type: dockerOptions
     version:
       portMappings:
-        - 40000:40000
+        - 40333:40333
 
 # Environment variables for TEST environment
   - name: params-front-end-test
@@ -84,14 +84,14 @@ resources:
       params:
         ENVIRONMENT: "development"
         NODE_ENV: "development"
-        PORT: 40000
+        PORT: 40333
 
 # Docker image options for PROD environment
   - name: img-opts-front-end-prod
     type: dockerOptions
     version:
       portMappings:
-        - 50000:50000
+        - 50333:50333
 
 # Environment variables for PROD environment
   - name: params-front-end-prod
@@ -100,7 +100,7 @@ resources:
       params:
         ENVIRONMENT: "production"
         NODE_ENV: "production"
-        PORT: 50000
+        PORT: 50333
 
 # PROD replica controller
   - name: replicas-front-end-prod
